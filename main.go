@@ -18,10 +18,10 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	var g errgroup.Group
 	g.Go(func() error {
-		return Listen(g, ctx, 1)
+		return Listen(&g, ctx, 1)
 	})
 	g.Go(func() error {
-		return Listen(g, ctx, 2)
+		return Listen(&g, ctx, 2)
 	})
 	select {
 	case sig := <-signalChannel:

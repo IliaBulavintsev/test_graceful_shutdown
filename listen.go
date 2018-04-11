@@ -8,7 +8,7 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-func Listen(g errgroup.Group, ctx context.Context, sec int) error {
+func Listen(g *errgroup.Group, ctx context.Context, sec int) error {
 	ticker := time.NewTicker(time.Duration(sec) * time.Second)
 	g.Go(func() error {
 		return Listen2(ctx, sec)
